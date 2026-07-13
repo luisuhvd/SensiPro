@@ -1,12 +1,188 @@
 <!DOCTYPE html>
 <html lang="pt-BR">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>SensiPro</title>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>SensiPro FF</title>
+
+<style>
+body{
+background:#0f1117;
+font-family:Arial;
+color:white;
+margin:0;
+padding:20px;
+}
+
+.card{
+background:#1b1e27;
+padding:20px;
+border-radius:15px;
+max-width:450px;
+margin:auto;
+box-shadow:0 0 20px rgba(0,0,0,.4);
+}
+
+h1{
+text-align:center;
+color:#ff9800;
+}
+
+select,button{
+width:100%;
+padding:12px;
+margin-top:10px;
+border:none;
+border-radius:10px;
+font-size:16px;
+}
+
+button{
+background:#ff9800;
+color:white;
+font-weight:bold;
+cursor:pointer;
+}
+
+.resultado{
+margin-top:20px;
+background:#11141c;
+padding:15px;
+border-radius:10px;
+}
+
+.valor{
+color:#00ff99;
+font-weight:bold;
+}
+</style>
+
 </head>
+
 <body>
-  <h1>SensiPro</h1>
-  <p>Meu site está funcionando!</p>
+
+<div class="card">
+
+<h1>SensiPro FF</h1>
+
+<label>Versão</label>
+
+<select id="modo">
+<option>Free Fire</option>
+<option>Free Fire MAX</option>
+</select>
+
+<label>Celular</label>
+
+<select id="celular">
+<option>Moto G60</option>
+<option>Redmi Note 13</option>
+<option>Galaxy A54</option>
+<option>iPhone 13</option>
+<option>iPhone 15</option>
+</select>
+
+<label>Estilo</label>
+
+<select id="estilo">
+<option>Capa</option>
+<option>Misto</option>
+<option>Precisão</option>
+</select>
+
+<button onclick="gerar()">GERAR SENSIBILIDADE</button>
+
+<div class="resultado">
+
+<p>🎯 Geral:
+<span id="geral" class="valor">-</span></p>
+
+<p>🔴 Ponto Vermelho:
+<span id="vermelho" class="valor">-</span></p>
+
+<p>🔍 Mira 2x:
+<span id="doisx" class="valor">-</span></p>
+
+<p>🎯 Mira 4x:
+<span id="quatrox" class="valor">-</span></p>
+
+<p>🎯 AWM:
+<span id="awm" class="valor">-</span></p>
+
+<p>👀 Olhadinha:
+<span id="olhada" class="valor">-</span></p>
+
+<p>📈 DPI:
+<span id="dpi" class="valor">-</span></p>
+
+</div>
+
+</div>
+
+<script>
+
+function random(min,max){
+return Math.floor(Math.random()*(max-min+1))+min;
+}
+
+function gerar(){
+
+let modo=document.getElementById("modo").value;
+let estilo=document.getElementById("estilo").value;
+
+let geral;
+let vermelho;
+let doisx;
+let quatrox;
+let awm;
+let olhada;
+let dpi;
+
+if(modo=="Free Fire"){
+
+geral=random(182,190);
+vermelho=random(192,200);
+doisx=random(172,182);
+quatrox=random(155,166);
+awm=random(15,35);
+olhada=random(105,120);
+dpi=random(430,500);
+
+}else{
+
+geral=random(178,186);
+vermelho=random(190,198);
+doisx=random(168,178);
+quatrox=random(150,162);
+awm=random(15,30);
+olhada=random(100,115);
+dpi=random(420,490);
+
+}
+
+if(estilo=="Capa"){
+geral+=5;
+vermelho+=3;
+dpi+=15;
+}
+
+if(estilo=="Precisão"){
+geral-=8;
+vermelho-=5;
+dpi-=20;
+}
+
+document.getElementById("geral").innerHTML=geral;
+document.getElementById("vermelho").innerHTML=vermelho;
+document.getElementById("doisx").innerHTML=doisx;
+document.getElementById("quatrox").innerHTML=quatrox;
+document.getElementById("awm").innerHTML=awm;
+document.getElementById("olhada").innerHTML=olhada;
+document.getElementById("dpi").innerHTML=dpi;
+
+}
+
+</script>
+
 </body>
 </html>
